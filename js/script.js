@@ -1,5 +1,5 @@
 // ==========================================================================
-// PORTOFOLIO INTERACTIVITY - CLEAN & STABLE VERSION
+// PORTOFOLIO INTERACTIVITY & ANIMATION SYSTEM
 // ==========================================================================
 
 const translations = {
@@ -42,7 +42,7 @@ const translations = {
     edu_title: "Pendidikan",
     edu_uniku_degree: "S1 Teknik Informatika",
     edu_uniku_desc: "Berfokus pada pengembangan perangkat lunak, sistem basis data, analisis proses bisnis, dan teknologi informasi. Berhasil menyelesaikan studi tepat waktu dengan predikat Sangat Memuaskan (IPK 3,62).",
-    edu_smk_rank: "Nilai Akhir: 86.00",
+    edu_smk_rank: "Nilai Akhir: 86.00 (Peringkat 3 Besar)",
     edu_smk_degree: "Teknik Kendaraan Ringan Otomotif (TKRO)",
     edu_smk_desc: "Mempelajari dasar perawatan, perbaikan, dan diagnosa sistem mekanis/elektronik. Berhasil meraih peringkat tiga besar paralel, aktif sebagai Ketua Organisasi ROHIS (2020 - 2021), serta menyelesaikan sertifikasi perawatan berkala.",
     exp_tag: "Rekam Jejak Karir",
@@ -137,7 +137,7 @@ const translations = {
     edu_title: "Education",
     edu_uniku_degree: "B.S. in Information Technology",
     edu_uniku_desc: "Focused on software development, database systems, business process analysis, and IT solutions. Graduated on time with Very Satisfactory distinction (GPA 3.62).",
-    edu_smk_rank: "Final Score: 86.00 ",
+    edu_smk_rank: "Final Score: 86.00 (Top 3 Rank)",
     edu_smk_degree: "Light Vehicle Automotive Engineering",
     edu_smk_desc: "Learned basic maintenance, repairs, and diagnostics of mechanical/electronic systems. Achieved parallel top 3 rank, active as Chairman of ROHIS Organization (2020 - 2021), and completed periodic maintenance certification.",
     exp_tag: "Career Track Record",
@@ -197,7 +197,6 @@ const translations = {
 
 let currentLang = localStorage.getItem('portfolioLang') || 'id';
 
-// Helper Function: Safe Language Switcher
 function setLanguage(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
@@ -215,10 +214,9 @@ function setLanguage(lang) {
   currentLang = lang;
 }
 
-// DOM Fully Loaded
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. Theme Logic
+  // 1. Dark/Light Theme Handler
   const themeToggleBtn = document.getElementById('themeToggleBtn');
   if (localStorage.getItem('portfolioTheme') === 'light') {
     document.body.classList.add('light-mode');
@@ -232,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Initial Language Apply
+  // 2. Language Switcher Handler
   setLanguage(currentLang);
 
   const langToggleBtn = document.getElementById('langToggleBtn');
@@ -242,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Simple & Stable Typing Effect
+  // 3. Typing Effect
   const typingElement = document.getElementById('typingEffect');
   if (typingElement) {
     let wordIdx = 0;
@@ -282,22 +280,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 5. Scroll Reveal
-  const revealElements = document.querySelectorAll('section, .skill-card, .project-card, .cert-card, .timeline-item');
-  revealElements.forEach(el => el.classList.add('reveal-element'));
+  // 5. AUTOMATIC SCROLL REVEAL ASSIGNMENT
+  
+  // Section Headers -> Slide Up
+  document.querySelectorAll('section .text-center').forEach(el => {
+    el.classList.add('reveal-element', 'reveal-up');
+  });
 
-  const observer = new IntersectionObserver((entries) => {
+  // Cards (Skill, Project, Cert, Gallery, About) -> Zoom In + Delay Berurutan
+  document.querySelectorAll('.skill-card, .project-card, .cert-card, .gallery-card, .about-card, .contact-info-card, .contact-form-card').forEach((el, index) => {
+    el.classList.add('reveal-element', 'reveal-zoom');
+    const delayClass = `delay-${(index % 4) + 1}`;
+    el.classList.add(delayClass);
+  });
+
+  // Timeline Items -> Slide Up
+  document.querySelectorAll('.timeline-item').forEach(el => {
+    el.classList.add('reveal-element', 'reveal-up');
+  });
+
+  // 6. INTERSECTION OBSERVER FOR SCROLL REVEAL
+  const isMobile = window.innerWidth < 768;
+  const observerOptions = {
+    root: null,
+    rootMargin: isMobile ? '0px 0px -30px 0px' : '0px 0px -70px 0px',
+    threshold: isMobile ? 0.05 : 0.12
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, observerOptions);
 
-  revealElements.forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal-element').forEach(el => {
+    revealObserver.observe(el);
+  });
 
-  // 6. Active Nav Link on Scroll
+  // 7. Active Nav Link on Scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.custom-navbar .nav-link');
 

@@ -600,14 +600,46 @@ body.light-mode .btn-close {
 
 .reveal-element {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .reveal-element.active {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Variasi 1: Slide Up (Default) */
+.reveal-up {
+  transform: translateY(40px);
+}
+
+/* Variasi 2: Zoom In (Sangat Bagus untuk Card / Project / Gallery) */
+.reveal-zoom {
+  transform: scale(0.92) translateY(20px);
+}
+
+/* Variasi 3: Slide Left & Right (Untuk Timeline & About) */
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+/* KETIKA ELEMEN AKTIF (MASUK VIEWPORT) */
+.reveal-element.active {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Stagger Delay (Efek Berurutan pada Kartu) */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
 
 /* ==========================================================================
    7. RESPONSIVE OPTIMIZATION
@@ -642,4 +674,29 @@ body.light-mode .btn-close {
 
   .hero-section .btn { width: 100%; }
   .back-to-top-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1.25rem; }
+}
+
+@media (max-width: 767.98px) {
+  /* Di HP, kurangi jarak perpindahan agar scroll terasa ringan dan presisi */
+  .reveal-up {
+    transform: translateY(20px);
+  }
+
+  .reveal-zoom {
+    transform: scale(0.96) translateY(10px);
+  }
+
+  .reveal-left,
+  .reveal-right {
+    transform: translateX(0) translateY(15px); /* Ubah slide samping jadi slide bawah di HP */
+  }
+
+  /* Hilangkan delay berlebihan di HP agar pengguna tidak perlu menunggu lama saat scroll cepat */
+  .delay-1, .delay-2, .delay-3, .delay-4 {
+    transition-delay: 0.05s;
+  }
+
+  .reveal-element {
+    transition-duration: 0.6s; /* Animasi sedikit lebih cepat di HP */
+  }
 }
