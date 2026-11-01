@@ -374,6 +374,38 @@
           <div class="col-lg-10">
             
             <div class="timeline-container">
+              
+              <!-- PT Delapan Delapan Logistics (PIC) -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content p-4 rounded-4">
+                  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+                    <span class="badge bg-primary-subtle text-accent border border-primary-subtle px-3 py-2 rounded-pill fs-7">
+                      <i class="bi bi-calendar3 me-1"></i> Juli 2026 – Oktober 2026
+                    </span>
+                    <span class="badge bg-primary text-white px-3 py-2 rounded-pill fs-7" data-i18n="exp_delapan_role">
+                      PIC / Logistics Operations
+                    </span>
+                  </div>
+                  <h3 class="fs-4 fw-bold text-white mb-1" data-i18n="exp_delapan_company">Person In Charge (PIC)</h3>
+                  <h4 class="fs-6 fw-semibold text-accent mb-3">PT. Delapan Delapan Logistics</h4>
+                  <ul class="text-muted-custom leading-relaxed mb-3 ps-3">
+                    <li class="mb-1" data-i18n="exp_delapan_l1">Mengkoordinasikan kegiatan operasional distribusi bantuan pangan bersama tim dan pihak terkait.</li>
+                    <li class="mb-1" data-i18n="exp_delapan_l2">Memantau kesiapan dan pergerakan armada untuk memastikan proses pengiriman berjalan sesuai jadwal.</li>
+                    <li class="mb-1" data-i18n="exp_delapan_l3">Mengelola dan memverifikasi data pengiriman, armada, serta dokumen pendukung distribusi.</li>
+                    <li class="mb-1" data-i18n="exp_delapan_l4">Melakukan koordinasi dengan pengemudi dan pihak terkait selama proses penyaluran bantuan.</li>
+                    <li class="mb-1" data-i18n="exp_delapan_l5">Memastikan proses distribusi berjalan sesuai prosedur dan kebutuhan operasional di lapangan.</li>
+                    <li class="mb-1" data-i18n="exp_delapan_l6">Menangani serta melaporkan kendala operasional yang terjadi selama proses distribusi.</li>
+                    <li class="mb-0" data-i18n="exp_delapan_l7">Menyusun rekapitulasi dan laporan terkait pelaksanaan kegiatan distribusi.</li>
+                  </ul>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="badge bg-card text-muted-custom border-subtle">Logistics Operations</span>
+                    <span class="badge bg-card text-muted-custom border-subtle">Fleet Monitoring</span>
+                    <span class="badge bg-card text-muted-custom border-subtle">Data Verification</span>
+                    <span class="badge bg-card text-muted-custom border-subtle">Field Coordination</span>
+                  </div>
+                </div>
+              </div>
 
               <!-- Operator Sekolah SDN 2 Durajaya -->
               <div class="timeline-item">
@@ -743,7 +775,7 @@
                 <div class="col-8">
                   <span class="badge bg-info text-dark fs-7 mb-2">Badan Nasional Sertifikasi Profesi</span>
                   <h3 class="fs-5 fw-bold text-white mb-1">Junior Web Developer (BNSP)</h3>
-                  <h4 class="fs-6 text-cyan mb-2">Mar 2023</h4>
+                  <h4 class="fs-6 text-cyan mb-2">Oct 2023</h4>
                   <p class="text-muted-custom fs-7 mb-0" data-i18n="cert_jwd_desc">Sertifikasi kompetensi nasional dalam merancang, membangun, dan menguji aplikasi berbasis web.</p>
                 </div>
                 <div class="col-4 text-end">
@@ -762,7 +794,7 @@
                 <div class="col-8">
                   <span class="badge bg-warning text-dark fs-7 mb-2">Badan Nasional Sertifikasi Profesi</span>
                   <h3 class="fs-5 fw-bold text-white mb-1">Junior Network Administrator (BNSP)</h3>
-                  <h4 class="fs-6 text-warning mb-2">Sep 2023</h4>
+                  <h4 class="fs-6 text-warning mb-2">Apr 2024</h4>
                   <p class="text-muted-custom fs-7 mb-0" data-i18n="cert_jna_desc">Sertifikasi kompetensi nasional dalam mengonfigurasi perangkat jaringan dan troubleshooting konektivitas.</p>
                 </div>
                 <div class="col-4 text-end">
@@ -781,7 +813,7 @@
                 <div class="col-8">
                   <span class="badge bg-secondary text-white fs-7 mb-2">MySkill Professional Certification</span>
                   <h3 class="fs-5 fw-bold text-white mb-1">Graphic Design</h3>
-                  <h4 class="fs-6 text-accent mb-2">Mei 2025</h4>
+                  <h4 class="fs-6 text-accent mb-2">May 2025</h4>
                   <p class="text-muted-custom fs-7 mb-0" data-i18n="cert_gd_desc">Sertifikasi keahlian dalam prinsip desain komunikasi visual, tipografi, dan komposisi desain media.</p>
                 </div>
                 <div class="col-4 text-end">
@@ -816,10 +848,11 @@
 
         <!-- Pelatihan Tambahan (12 Pelatihan Spesialisasi - 4 Kolom) -->
         <h3 class="fs-5 fw-bold text-white mb-4"><i class="bi bi-journal-bookmark-fill text-cyan me-2"></i><span data-i18n="cert_train_heading">Pelatihan Spesialisasi</span></h3>
-        <div class="row g-3">
+        
+        <div class="row g-3" id="trainingContainer">
           
-          <!-- 1. Data Visualization Excel -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 1. Data Visualization Excel (Tampil Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Mar 2025</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Data Visualization with MS Excel</h4>
@@ -827,8 +860,8 @@
             </div>
           </div>
 
-          <!-- 2. Product Management -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 2. Product Management (Tampil Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Mar 2025</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Introduction to Product Management</h4>
@@ -836,8 +869,8 @@
             </div>
           </div>
 
-          <!-- 3. Figma UI/UX -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 3. Figma UI/UX (Tampil Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Mar 2025</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Figma Introduction (UI/UX)</h4>
@@ -845,8 +878,8 @@
             </div>
           </div>
 
-          <!-- 4. Machine Learning Android -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 4. Machine Learning Android (Tampil Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Des 2024</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Penerapan Machine Learning di Android</h4>
@@ -854,8 +887,8 @@
             </div>
           </div>
 
-          <!-- 5. Android Intermediate -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 5. Android Intermediate (Hidden Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card is-hidden" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Des 2024</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Pengembangan Android Intermediate</h4>
@@ -863,8 +896,8 @@
             </div>
           </div>
 
-          <!-- 6. Fundamental Android -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 6. Fundamental Android (Hidden Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card is-hidden" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Nov 2024</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Fundamental Aplikasi Android</h4>
@@ -872,8 +905,8 @@
             </div>
           </div>
 
-          <!-- 7. Belajar Dasar AI -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 7. Belajar Dasar AI (Hidden Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card is-hidden" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Okt 2024</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Belajar Dasar AI</h4>
@@ -881,8 +914,8 @@
             </div>
           </div>
 
-          <!-- 8. Pemrograman Kotlin -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 8. Pemrograman Kotlin (Hidden Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card is-hidden" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Sep 2024</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Memulai Pemrograman Kotlin</h4>
@@ -890,8 +923,8 @@
             </div>
           </div>
 
-          <!-- 9. Dasar Git & GitHub -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 9. Dasar Git & GitHub (Hidden Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card is-hidden" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Sep 2024</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Belajar Git dengan GitHub</h4>
@@ -899,8 +932,8 @@
             </div>
           </div>
 
-          <!-- 10. Adobe Photoshop -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 10. Adobe Photoshop (Hidden Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card is-hidden" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Apr 2025</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Adobe Photoshop for Digital Design</h4>
@@ -908,8 +941,8 @@
             </div>
           </div>
 
-          <!-- 11. Junior Network Administrator -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 11. Junior Network Administrator (Hidden Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card is-hidden" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Mar 2024</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Junior Network Administrator</h4>
@@ -917,8 +950,8 @@
             </div>
           </div>
 
-          <!-- 12. Junior Web Developer -->
-          <div class="col-6 col-md-6 col-lg-3">
+          <!-- 12. Junior Web Developer (Hidden Awal) -->
+          <div class="col-6 col-md-6 col-lg-3 training-card is-hidden" data-training-card>
             <div class="p-3 rounded-4 bg-card border-subtle h-100">
               <span class="badge bg-primary-subtle text-accent fs-7 mb-2">Sep 2023</span>
               <h4 class="fs-6 fw-bold text-white mb-1">Junior Web Developer</h4>
@@ -927,6 +960,15 @@
           </div>
 
         </div>
+
+        <!-- Tombol Tampilkan Semua / Sembunyikan -->
+        <div class="text-center mt-4">
+          <button id="toggleTrainingBtn" class="btn btn-outline-custom px-4 py-2">
+            <span id="toggleTrainingText">Tampilkan Semua (12)</span>
+            <i id="toggleTrainingIcon" class="bi bi-chevron-down ms-1"></i>
+          </button>
+        </div>
+
       </div>
     </section>
 

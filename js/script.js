@@ -20,11 +20,7 @@ const translations = {
     hero_contact_me: "Hubungi Saya",
     hero_connect: "Connect with me:",
     typing_words: [
-      "Digital Transformation Specialist",
-      "Data Management Specialist",
-      "Business Process Improvement",
-      "Junior Web Developer (BNSP)",
-      "Mobile Developer (Bangkit Academy)"
+      "S1 Teknik Informatika"
     ],
     about_tag: "Profil Singkat",
     about_title: "Tentang Saya",
@@ -42,10 +38,19 @@ const translations = {
     edu_title: "Pendidikan",
     edu_uniku_degree: "S1 Teknik Informatika",
     edu_uniku_desc: "Berfokus pada pengembangan perangkat lunak, sistem basis data, analisis proses bisnis, dan teknologi informasi. Berhasil menyelesaikan studi tepat waktu dengan predikat Sangat Memuaskan (IPK 3,62).",
-    edu_smk_rank: "Nilai Akhir: 86.00 (Peringkat 3 Besar)",
+    edu_smk_rank: "Nilai Akhir: 86.00",
     edu_smk_degree: "Teknik Kendaraan Ringan Otomotif (TKRO)",
     edu_smk_desc: "Mempelajari dasar perawatan, perbaikan, dan diagnosa sistem mekanis/elektronik. Berhasil meraih peringkat tiga besar paralel, aktif sebagai Ketua Organisasi ROHIS (2020 - 2021), serta menyelesaikan sertifikasi perawatan berkala.",
     exp_tag: "Rekam Jejak Karir",
+    exp_delapan_role: "PIC / Logistik & Operasional",
+    exp_delapan_company: "Person In Charge (PIC)",
+    exp_delapan_l1: "Mengkoordinasikan kegiatan operasional distribusi bantuan pangan bersama tim dan pihak terkait.",
+    exp_delapan_l2: "Memantau kesiapan dan pergerakan armada untuk memastikan proses pengiriman berjalan sesuai jadwal.",
+    exp_delapan_l3: "Mengelola dan memverifikasi data pengiriman, armada, serta dokumen pendukung distribusi.",
+    exp_delapan_l4: "Melakukan koordinasi dengan pengemudi dan pihak terkait selama proses penyaluran bantuan.",
+    exp_delapan_l5: "Memastikan proses distribusi berjalan sesuai prosedur dan kebutuhan operasional di lapangan.",
+    exp_delapan_l6: "Menangani serta melaporkan kendala operasional yang terjadi selama proses distribusi.",
+    exp_delapan_l7: "Menyusun rekapitulasi dan laporan terkait pelaksanaan kegiatan distribusi.",
     exp_title: "Pengalaman Kerja & Praktik",
     exp_op_role: "Operator Sekolah / Data Admin",
     exp_op_position: "Operator Sekolah",
@@ -96,7 +101,9 @@ const translations = {
     form_email_label: "Alamat Email",
     form_subject_label: "Subjek Pesan",
     form_message_label: "Pesan Anda",
-    form_submit_btn: "Kirim Pesan"
+    form_submit_btn: "Kirim Pesan",
+    btn_show_more: "Tampilkan Semua (12)",
+    btn_show_less: "Sembunyikan"
   },
   en: {
     nav_home: '<i class="bi bi-house me-1"></i> Home',
@@ -115,11 +122,7 @@ const translations = {
     hero_contact_me: "Contact Me",
     hero_connect: "Connect with me:",
     typing_words: [
-      "Digital Transformation Specialist",
-      "Data Management Specialist",
-      "Business Process Improvement",
-      "Junior Web Developer (BNSP)",
-      "Mobile Developer (Bangkit Academy)"
+      "Information Technology Graduate"
     ],
     about_tag: "Short Profile",
     about_title: "About Me",
@@ -137,10 +140,19 @@ const translations = {
     edu_title: "Education",
     edu_uniku_degree: "B.S. in Information Technology",
     edu_uniku_desc: "Focused on software development, database systems, business process analysis, and IT solutions. Graduated on time with Very Satisfactory distinction (GPA 3.62).",
-    edu_smk_rank: "Final Score: 86.00 (Top 3 Rank)",
+    edu_smk_rank: "Final Score: 86.00",
     edu_smk_degree: "Light Vehicle Automotive Engineering",
     edu_smk_desc: "Learned basic maintenance, repairs, and diagnostics of mechanical/electronic systems. Achieved parallel top 3 rank, active as Chairman of ROHIS Organization (2020 - 2021), and completed periodic maintenance certification.",
     exp_tag: "Career Track Record",
+    exp_delapan_role: "PIC / Logistics Operations",
+    exp_delapan_company: "Person In Charge (PIC)",
+    exp_delapan_l1: "Mengkoordinasikan kegiatan operasional distribusi bantuan pangan bersama tim dan pihak terkait.",
+    exp_delapan_l2: "Memantau kesiapan dan pergerakan armada untuk memastikan proses pengiriman berjalan sesuai jadwal.",
+    exp_delapan_l3: "Mengelola dan memverifikasi data pengiriman, armada, serta dokumen pendukung distribusi.",
+    exp_delapan_l4: "Melakukan koordinasi dengan pengemudi dan pihak terkait selama proses penyaluran bantuan.",
+    exp_delapan_l5: "Memastikan proses distribusi berjalan sesuai prosedur dan kebutuhan operasional di lapangan.",
+    exp_delapan_l6: "Menangani serta melaporkan kendala operasional yang terjadi selama proses distribusi.",
+    exp_delapan_l7: "Menyusun rekapitulasi dan laporan terkait pelaksanaan kegiatan distribusi.",
     exp_title: "Work Experience & Internships",
     exp_op_role: "School Operator / Data Admin",
     exp_op_position: "School Operator",
@@ -191,11 +203,25 @@ const translations = {
     form_email_label: "Email Address",
     form_subject_label: "Subject",
     form_message_label: "Your Message",
-    form_submit_btn: "Send Message"
+    form_submit_btn: "Send Message",
+    btn_show_more: "Show All (12)",
+    btn_show_less: "Show Less"
   }
 };
 
 let currentLang = localStorage.getItem('portfolioLang') || 'id';
+let isTrainingExpanded = false;
+
+function updateTrainingBtnText() {
+  const toggleTrainingText = document.getElementById('toggleTrainingText');
+  if (toggleTrainingText) {
+    if (isTrainingExpanded) {
+      toggleTrainingText.textContent = translations[currentLang]?.btn_show_less || "Sembunyikan";
+    } else {
+      toggleTrainingText.textContent = translations[currentLang]?.btn_show_more || "Tampilkan Semua (12)";
+    }
+  }
+}
 
 function setLanguage(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -212,6 +238,7 @@ function setLanguage(lang) {
 
   localStorage.setItem('portfolioLang', lang);
   currentLang = lang;
+  updateTrainingBtnText();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -280,15 +307,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 5. AUTOMATIC SCROLL REVEAL ASSIGNMENT
+  // 5. TOGGLE SHOW MORE / SHOW LESS PELATIHAN SPESIALISASI
+  const toggleTrainingBtn = document.getElementById('toggleTrainingBtn');
+  const toggleTrainingIcon = document.getElementById('toggleTrainingIcon');
+  const hiddenTrainingCards = document.querySelectorAll('.training-card.is-hidden');
+
+  if (toggleTrainingBtn) {
+    toggleTrainingBtn.addEventListener('click', () => {
+      isTrainingExpanded = !isTrainingExpanded;
+
+      hiddenTrainingCards.forEach(card => {
+        if (isTrainingExpanded) {
+          card.classList.remove('is-hidden');
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 50);
+        } else {
+          card.classList.add('is-hidden');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+        }
+      });
+
+      updateTrainingBtnText();
+
+      if (toggleTrainingIcon) {
+        toggleTrainingIcon.className = isTrainingExpanded ? "bi bi-chevron-up ms-1" : "bi bi-chevron-down ms-1";
+      }
+    });
+  }
+
+  // 6. AUTOMATIC SCROLL REVEAL ASSIGNMENT
   
   // Section Headers -> Slide Up
   document.querySelectorAll('section .text-center').forEach(el => {
     el.classList.add('reveal-element', 'reveal-up');
   });
 
-  // Cards (Skill, Project, Cert, Gallery, About) -> Zoom In + Delay Berurutan
-  document.querySelectorAll('.skill-card, .project-card, .cert-card, .gallery-card, .about-card, .contact-info-card, .contact-form-card').forEach((el, index) => {
+  // Cards (Skill, Project, Cert, Gallery, About, Training) -> Zoom In + Delay Berurutan
+  document.querySelectorAll('.skill-card, .project-card, .cert-card, .gallery-card, .about-card, .contact-info-card, .contact-form-card, .training-card').forEach((el, index) => {
     el.classList.add('reveal-element', 'reveal-zoom');
     const delayClass = `delay-${(index % 4) + 1}`;
     el.classList.add(delayClass);
@@ -299,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.classList.add('reveal-element', 'reveal-up');
   });
 
-  // 6. INTERSECTION OBSERVER FOR SCROLL REVEAL
+  // 7. INTERSECTION OBSERVER FOR SCROLL REVEAL
   const isMobile = window.innerWidth < 768;
   const observerOptions = {
     root: null,
@@ -320,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealObserver.observe(el);
   });
 
-  // 7. Active Nav Link on Scroll
+  // 8. Active Nav Link on Scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.custom-navbar .nav-link');
 
