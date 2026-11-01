@@ -1,0 +1,715 @@
+/* ==========================================================================
+   1. THEME VARIABLES (DARK & LIGHT MODE)
+   ========================================================================== */
+
+/* Default Variable (Dark Theme) */
+:root {
+  --bg-dark: #0f172a;        /* Slate 900 */
+  --bg-card: #1e293b;        /* Slate 800 */
+  --accent-blue: #3b82f6;    /* Blue 500 */
+  --accent-cyan: #06b6d4;    /* Cyan 500 */
+  --text-main: #f8fafc;      /* Slate 50 */
+  --text-muted: #94a3b8;     /* Slate 400 */
+  --border-color: #334155;   /* Slate 700 */
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --navbar-bg: rgba(15, 23, 42, 0.85);
+}
+
+/* Light Theme Variable Override */
+body.light-mode {
+  --bg-dark: #f8fafc;        /* Slate 50 */
+  --bg-card: #ffffff;        /* Putih Bersih */
+  --accent-blue: #2563eb;    /* Blue 600 */
+  --accent-cyan: #0284c7;    /* Light Blue 600 */
+  --text-main: #0f172a;      /* Slate 900 */
+  --text-muted: #475569;     /* Slate 600 */
+  --border-color: #cbd5e1;   /* Slate 300 */
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --navbar-bg: rgba(248, 250, 252, 0.85);
+}
+
+/* Base Body Styles (Font Poppins) */
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Transition Komponen */
+.about-card, .timeline-content, .skill-card, .project-card, 
+.cert-card, .contact-info-card, .contact-form-card, .custom-navbar {
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Utility Classes Dynamic Warna */
+.text-accent { color: var(--accent-blue) !important; }
+.text-cyan { color: var(--accent-cyan) !important; }
+.text-secondary-custom, .text-muted-custom { color: var(--text-muted) !important; }
+.bg-card { background-color: var(--bg-card) !important; }
+.border-subtle { border: 1px solid var(--border-color) !important; }
+
+/* Dynamic Override untuk Kelas Bootstrap .text-white di Light Mode */
+body.light-mode .text-white,
+body.light-mode h1, body.light-mode h2, body.light-mode h3, 
+body.light-mode h4, body.light-mode h5, body.light-mode h6,
+body.light-mode .modal-title {
+  color: var(--text-main) !important;
+}
+
+/* Gradient Text Penyesuaian Mode Terang */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent-blue) 50%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light-mode .text-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, var(--accent-blue) 60%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Layout Reset */
+html { scroll-behavior: smooth; }
+section { padding: 100px 0; position: relative; }
+section[id] { scroll-margin-top: 80px; }
+
+/* ==========================================================================
+   2. NAVBAR STYLES (OUTLINE ICONS & BOTTOM ACTIVE BORDER)
+   ========================================================================== */
+.custom-navbar {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  padding: 10px 0;
+}
+
+.custom-navbar .navbar-brand {
+  color: var(--text-main) !important;
+}
+
+.custom-navbar .nav-link {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 10px 14px !important;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0;
+  background: transparent !important;
+  transition: color 0.25s ease;
+}
+
+.custom-navbar .nav-link i {
+  font-size: 1.05rem;
+  transition: transform 0.2s ease;
+}
+
+.custom-navbar .nav-link:hover i {
+  transform: translateY(-2px);
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: var(--accent-blue) !important;
+}
+
+/* Garis Indikator Aktif di Bawah Navbar */
+.custom-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--accent-blue);
+  border-radius: 3px 3px 0 0;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: block !important;
+}
+
+.custom-navbar .nav-link:hover::after,
+.custom-navbar .nav-link.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Tombol Mode Terang/Gelap & Switcher Bahasa */
+.theme-toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: scale(1.08);
+}
+
+.sun-icon { display: none; color: #f59e0b; }
+.moon-icon { display: inline-block; color: #3b82f6; }
+
+body.light-mode .sun-icon { display: inline-block; }
+body.light-mode .moon-icon { display: none; }
+
+.lang-toggle-btn {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 20px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-toggle-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   3. BUTTONS & UI COMPONENTS
+   ========================================================================== */
+.btn-primary-custom {
+  background-color: var(--accent-blue);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: #2563eb;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-outline-custom {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+  background-color: rgba(59, 130, 246, 0.08);
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.social-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon-btn:hover {
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  transform: translateY(-3px);
+}
+
+/* Input Form di Light Mode */
+.custom-input {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+body.light-mode .custom-input {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.custom-input::placeholder { color: #64748b !important; }
+.custom-input:focus {
+  border-color: var(--accent-blue) !important;
+  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+}
+
+/* Badge Text Override di Light Mode */
+body.light-mode .badge.bg-card {
+  color: var(--text-main) !important;
+  background-color: #e2e8f0 !important;
+}
+
+/* Modal Content Override di Light Mode */
+body.light-mode .modal-content {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+body.light-mode .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* ==========================================================================
+   4. HERO SECTION STYLES
+   ========================================================================== */
+.hero-section {
+  padding-top: 120px;
+  padding-bottom: 60px;
+  background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+}
+
+.fw-extrabold { font-weight: 800; }
+.fs-7 { font-size: 0.85rem; }
+
+.status-pulse {
+  width: 10px;
+  height: 10px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.hero-avatar-wrapper {
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero-avatar-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, rgba(6, 182, 212, 0.1) 60%, transparent 80%);
+  border-radius: 50%;
+  filter: blur(45px);
+  z-index: 0;
+  transition: all 0.5s ease;
+}
+
+.hero-avatar-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.hero-avatar-wrapper:hover::before {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(6, 182, 212, 0.2) 60%, transparent 80%);
+  filter: blur(50px);
+}
+
+.hero-avatar-wrapper:hover .hero-avatar-img {
+  transform: translateY(-8px) scale(1.02);
+  filter: drop-shadow(0 20px 35px rgba(59, 130, 246, 0.3));
+}
+
+/* ==========================================================================
+   5. SECTIONS & CARDS STYLES
+   ========================================================================== */
+.header-line {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  border-radius: 2px;
+}
+
+.tracking-wider { letter-spacing: 1.5px; }
+.leading-relaxed { line-height: 1.7; }
+
+/* General Card Styles */
+.about-card, .skill-card, .project-card, .cert-card, .contact-info-card, .contact-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.about-card:hover, .skill-card:hover, .cert-card:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px var(--shadow-color);
+}
+
+.info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Timeline Styles */
+.timeline-container { position: relative; padding-left: 30px; }
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+}
+
+.timeline-item { position: relative; margin-bottom: 40px; }
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: -30px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--bg-dark);
+  border: 3px solid var(--accent-blue);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.timeline-item:hover .timeline-dot {
+  background-color: var(--accent-blue);
+  transform: scale(1.2);
+}
+
+.timeline-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateX(8px);
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.timeline-content ul li::marker { color: var(--accent-blue); }
+
+.experience-section {
+  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 60%);
+}
+
+/* Skill Icon */
+.skill-category-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.1));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Project Card & Hover */
+.project-card:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.project-img-wrapper {
+  aspect-ratio: 16 / 10;
+  background-color: var(--bg-dark);
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img { transform: scale(1.08); }
+
+/* Gallery Card & Lightbox */
+.gallery-card {
+  cursor: pointer;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  aspect-ratio: 1 / 1;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(15, 23, 42, 0.95) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay { opacity: 1; }
+.gallery-card:hover .gallery-img { transform: scale(1.1); }
+
+/* Certificate Card & Image Thumb */
+.cert-card { text-align: left; }
+.cert-img-wrapper {
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  background-color: var(--bg-dark);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cert-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cert-img-wrapper:hover {
+  border-color: var(--accent-blue) !important;
+  transform: scale(1.03);
+}
+
+.cert-img-wrapper:hover .cert-thumb { transform: scale(1.08); }
+
+/* ==========================================================================
+   6. FOOTER, BACK TO TOP & ANIMATIONS
+   ========================================================================== */
+.footer-section {
+  background-color: var(--bg-card);
+  position: relative;
+  z-index: 10;
+}
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: var(--accent-blue);
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  transition: all 0.3s ease;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.back-to-top-btn.show { opacity: 1; visibility: visible; }
+.back-to-top-btn:hover {
+  background-color: #2563eb;
+  color: #ffffff !important;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+}
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  width: 0%;
+  z-index: 1050;
+  transition: width 0.1s ease-out;
+}
+
+.typing-cursor {
+  display: inline-block;
+  color: var(--accent-cyan);
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.reveal-element {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-element.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variasi 1: Slide Up (Default) */
+.reveal-up {
+  transform: translateY(40px);
+}
+
+/* Variasi 2: Zoom In (Sangat Bagus untuk Card / Project / Gallery) */
+.reveal-zoom {
+  transform: scale(0.92) translateY(20px);
+}
+
+/* Variasi 3: Slide Left & Right (Untuk Timeline & About) */
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+/* KETIKA ELEMEN AKTIF (MASUK VIEWPORT) */
+.reveal-element.active {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Stagger Delay (Efek Berurutan pada Kartu) */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* ==========================================================================
+   7. RESPONSIVE OPTIMIZATION
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  section { padding: 70px 0; }
+  .hero-section { padding-top: 100px; padding-bottom: 40px; }
+
+  .custom-navbar .navbar-collapse {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 15px;
+    border: 1px solid var(--border-color);
+  }
+
+  .custom-navbar .nav-link::after { display: none; }
+  .hero-avatar-wrapper { max-width: 340px; margin-top: 20px; }
+}
+
+@media (max-width: 575.98px) {
+  section { padding: 50px 0; }
+  .display-4 { font-size: 2.2rem !important; }
+  .display-6 { font-size: 1.75rem !important; }
+
+  .timeline-container { padding-left: 20px; }
+  .timeline-container::before { left: 4px; }
+  .timeline-dot { left: -20px; width: 14px; height: 14px; top: 8px; }
+  .timeline-content { padding: 1.25rem !important; }
+
+  .hero-section .btn { width: 100%; }
+  .back-to-top-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1.25rem; }
+}
+
+@media (max-width: 767.98px) {
+  /* Di HP, kurangi jarak perpindahan agar scroll terasa ringan dan presisi */
+  .reveal-up {
+    transform: translateY(20px);
+  }
+
+  .reveal-zoom {
+    transform: scale(0.96) translateY(10px);
+  }
+
+  .reveal-left,
+  .reveal-right {
+    transform: translateX(0) translateY(15px); /* Ubah slide samping jadi slide bawah di HP */
+  }
+
+  /* Hilangkan delay berlebihan di HP agar pengguna tidak perlu menunggu lama saat scroll cepat */
+  .delay-1, .delay-2, .delay-3, .delay-4 {
+    transition-delay: 0.05s;
+  }
+
+  .reveal-element {
+    transition-duration: 0.6s; /* Animasi sedikit lebih cepat di HP */
+  }
+}
+
+/* Training Cards Show/Hide Animation */
+.training-card {
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.training-card.is-hidden {
+  display: none !important;
+  opacity: 0;
+  transform: translateY(20px);
+}
